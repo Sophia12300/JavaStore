@@ -16,7 +16,7 @@ public class Shop {
     //Scanner类可以获取用户从控制台输入的信息。
     //使用方法：①首先需要构造一个Scanner类的对象，并且与标准输入流System.in关联
     //②调用Scanner类对象sc的方法从输入流中获取你需要的输入：sc.nextInt()
-    //当创建了一个Scanner类对象之后，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给对象sc，若要获取需要的内容，调用sc的方法即可
+    //当创建了一个Scanner类对象之后，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给sc对象，若要获取需要的内容，调用sc的方法即可
     static Scanner sc = new Scanner(System.in);
     //ArrayList是List接口的实现类（将一个子类对象直接赋值给一个父类引用变量，这是多态的体现）
     static List<User> userList = new ArrayList<User>();
