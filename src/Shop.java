@@ -83,16 +83,18 @@ public class Shop {
                 user.showGoodList();
                 //判断用户是否登录，已确定是购买还是提示登录
                 if(User.isLogin) {//在User类中定义静态成员变量isLogin，在登录方法中，登录成功后设置为true
-                    String is_continue = "Y";
-                    while("Y".equals(is_continue) || "y".equals(is_continue)) {
-                        //购买商品
+                    System.out.println("是否继续购买：Y/N");
+                    String is_continue;
+                    is_continue = sc.next();
+                    if(is_continue.equals("Y")||is_continue.equals("y")){
                         user.buy();
-                        System.out.println("是否继续购买：Y/N");
-                        is_continue = sc.next();
+                        //购买商品
+                        System.out.println("*******商品购买成功！********");
+                        //查看购买的商品列表
+                        user.showMyGoodList();
+                        break;
                     }
-                    System.out.println("*******商品购买成功！********");
-                    //查看购买的商品列表
-                    user.showMyGoodList();
+                    System.out.println("用户取消购买。");
                 }else{
                     System.out.println("您还未登录，请先登录，再购买商品");
                 }
@@ -105,6 +107,7 @@ public class Shop {
                 System.out.println("您选择的菜单是:管理员登录");
                 Admin admin = new Admin();
                 admin.adminLogin();
+
                 break;
             case 6:
                 System.out.println("谢谢使用!");

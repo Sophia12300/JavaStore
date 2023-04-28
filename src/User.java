@@ -20,12 +20,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    //	public boolean isLogin() {
-//		return isLogin;
-//	}
-//	public void setLogin(boolean isLogin) {
-//		this.isLogin = isLogin;
-//	}
+    public boolean isLogin() {
+		return isLogin;
+	}
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
+	}
+
     //注册
     public void reg() {
         String username = "";
@@ -193,6 +194,15 @@ public class User implements Serializable {
                 System.out.println("库存不足!");
                 System.out.println("请重新输入您要购买的商品数量：");
             }else {
+                is_continue = sc.next();
+                if(is_continue.equals("Y")||is_continue.equals("y")){
+                    System.out.println("是否继续购买：Y/N");
+                    //购买商品
+                    System.out.println("*******商品购买成功！********");
+                    //查看购买的商品列表
+                    user.showMyGoodList();
+                }
+                System.out.println("用户取消购买。");
                 Good myGood = new Good();
                 try {
                     myGood = good.clone();
