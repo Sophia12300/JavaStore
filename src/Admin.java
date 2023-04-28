@@ -107,7 +107,7 @@ public class Admin extends User {
         good.setNum(num);
         //把商品信息放到集合中
         Shop.goodList.add(good);
-//		Shop.saveListToFile();
+        //Shop.saveListToFile();
         System.out.println("*******商品添加成功！********");
     }
 
@@ -146,7 +146,7 @@ public class Admin extends User {
 
     //删除商品
     public void deleteGood() {
-        System.out.println("******开始删除商品*********");
+        System.out.println("*******开始删除商品*********");
         System.out.println("请输入要删除的商品编号：");
         while(true) {
             int id = Shop.sc.nextInt();
