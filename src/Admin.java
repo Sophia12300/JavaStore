@@ -146,7 +146,7 @@ public class Admin extends User {
 
     //删除商品
     public void deleteGood() {
-        System.out.println("*******开始删除商品*********");
+        System.out.println("*********开始删除商品*********");
         System.out.println("请输入要删除的商品编号：");
         while(true) {
             int id = Shop.sc.nextInt();
