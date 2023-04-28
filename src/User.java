@@ -45,7 +45,7 @@ public class User implements Serializable {
                 }
             }
 
-            if(flag==false) {
+            if(!flag) {
                 continue;
             }
             //用户名长度不能少于3位
@@ -134,7 +134,7 @@ public class User implements Serializable {
                 }
             }
 
-            if(login_flag == true) {
+            if(login_flag) {
                 break;
             }else {
                 System.out.println("登录失败,请重新登录！");
