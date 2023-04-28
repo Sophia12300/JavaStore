@@ -20,12 +20,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    //	public boolean isLogin() {
-//		return isLogin;
-//	}
-//	public void setLogin(boolean isLogin) {
-//		this.isLogin = isLogin;
-//	}
     //注册
     public void reg() {
         String username = "";
