@@ -29,7 +29,7 @@ public class Shop {
 
         Shop shop = new Shop();
         shop.initGoodList();
-//		shop.readListFromFile();
+    //shop.readListFromFile();
         //菜单循环显示flag
         boolean go_on = true;
         //菜单循环显示
