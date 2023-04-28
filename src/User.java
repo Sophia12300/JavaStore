@@ -10,12 +10,15 @@ public class User implements Serializable {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -24,7 +27,7 @@ public class User implements Serializable {
     public void reg() {
         String username = "";
         String password = "";
-        while(true) {
+        while (true) {
             System.out.println("请输入用户名:");
             //调用Scanner类对象sc的方法从输入流中获取你需要的输入,sc.next:遇到第一个扫描有效字符，即第一个非空格非换行符后面开始，
             //一直获取到下一个空格/换行符之前的，单个字符串
@@ -32,32 +35,32 @@ public class User implements Serializable {
             boolean flag = true;
             //判断用户名是否存在
             for (User user : Shop.userList) {
-                if(username.equals(user.getUsername())) {
+                if (username.equals(user.getUsername())) {
                     System.out.println("用户名已存在！");
-                    flag=false;
+                    flag = false;
                     break;
                 }
             }
 
-            if(!flag) {
+            if (!flag) {
                 continue;
             }
             //用户名长度不能少于3位
-            if(username.length()<3) {
+            if (username.length() < 3) {
                 System.out.println("用户名长度不能少于3位！");
                 continue;
-            }else {
+            } else {
                 break;
             }
 
         }
 
-        while(true) {
+        while (true) {
             System.out.println("请输入密码:");
             password = Shop.sc.next();
 
             //密码长度不能少于6位
-            if(password.length()<6) {
+            if (password.length() < 6) {
                 System.out.println("密码长度不能少于6位！");
                 continue;
             }
@@ -65,19 +68,19 @@ public class User implements Serializable {
             char ch;
             int digit = 0;
             int letter = 0;
-            for(int i=0; i<password.length(); i++) {
+            for (int i = 0; i < password.length(); i++) {
                 //取得密码中的每个字符(public char charAt(int index):返回处于指定索引位置的字符，index的范围是[0,s.length()-1])
                 ch = password.charAt(i);
                 //计算密码中数字字符的个数(Character.isDigit()方法:用于判断指定字符是否为数字)
-                if(Character.isDigit(ch)) {
-                    digit = digit +1;
+                if (Character.isDigit(ch)) {
+                    digit = digit + 1;
                 }
                 //计算密码中字母字符的个数(Character.isLetter()方法:判断指定字符是否为字母)
-                if(Character.isLetter(ch)) {
+                if (Character.isLetter(ch)) {
                     letter = letter + 1;
                 }
             }
-            if(digit == 0 || letter == 0) {
+            if (digit == 0 || letter == 0) {
                 System.out.println("密码不能全为字母或全为数字！");
                 digit = 0;
                 letter = 0;
@@ -88,7 +91,7 @@ public class User implements Serializable {
             System.out.println("请再次确认密码:");
             String repassword = Shop.sc.next();
             //两次密码输入一致
-            if(password.equals(repassword)) {
+            if (password.equals(repassword)) {
                 //将赋值后的用户对象放入用户集合
                 User user = new User();
                 user.setUsername(username);
@@ -99,7 +102,7 @@ public class User implements Serializable {
 
                 //永久终止循环。即不执行本次循环中break后面的语句，并且直接跳出循环
                 break;
-            }else {
+            } else {
                 System.out.println("两次密码输入不一致！");
             }
         }
@@ -110,7 +113,7 @@ public class User implements Serializable {
     public void login() {
         String username = "";
         String password = "";
-        boolean login_flag=false;
+        boolean login_flag = false;
 
         System.out.println("请输入用户名：");
         while (true) {
@@ -120,7 +123,7 @@ public class User implements Serializable {
 
             //判断输入的用户名和密码是否正确
             for (User user : Shop.userList) {
-                if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                     System.out.println("登录成功！");
                     isLogin = true;
                     login_flag = true;
@@ -128,9 +131,9 @@ public class User implements Serializable {
                 }
             }
 
-            if(login_flag) {
+            if (login_flag) {
                 break;
-            }else {
+            } else {
                 System.out.println("登录失败,请重新登录！");
                 System.out.println("请重新输入用户名：");
             }
@@ -138,7 +141,7 @@ public class User implements Serializable {
     }
 
     //查看商品列表
-    public void showGoodList(){
+    public void showGoodList() {
         System.out.println("******商品列表如下*********");
         //对商品排序
         Collections.sort(Shop.goodList);
@@ -159,34 +162,34 @@ public class User implements Serializable {
             int num = good.getNum();
             total = total.add(price.multiply(BigDecimal.valueOf(num)));
         }
-        System.out.println("总价格为："+total);
+        System.out.println("总价格为：" + total);
     }
 
     //购买商品
-    public void buy(){
+    public void buy() {
         System.out.println("请输入您要购买的商品编号：");
         Good good = null;
-        while(true) {
-            int id=Shop.sc.nextInt();
+        while (true) {
+            int id = Shop.sc.nextInt();
             //根据商品编号查找商品信息
             good = findGoodById(id);
-            if(good == null) {
+            if (good == null) {
                 System.out.println("未找到该商品!");
                 System.out.println("请重新输入您要购买的商品编号：");
-            }else {
+            } else {
                 System.out.println("您将要购买的商品信息如下：");
                 System.out.println(good);
                 break;
             }
         }
         System.out.println("请输入您要购买的商品数量：");
-        while(true) {
+        while (true) {
             int num = Shop.sc.nextInt();
             //判断购买的商品数量是否大于库存数量
-            if(num > good.getNum()) {
+            if (num > good.getNum()) {
                 System.out.println("库存不足!");
                 System.out.println("请重新输入您要购买的商品数量：");
-            }else {
+            } else {
                 Good myGood = new Good();
                 try {
                     myGood = good.clone();
@@ -211,7 +214,7 @@ public class User implements Serializable {
     public Good findGoodById(int id) {
         Good returnGood = null;
         for (Good good : Shop.goodList) {
-            if(good.getId() == id) {
+            if (good.getId() == id) {
                 returnGood = good;
                 break;
             }
